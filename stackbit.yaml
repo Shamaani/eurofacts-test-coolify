@@ -1,0 +1,39 @@
+stackbitVersion: "~0.3.0"
+ssgName: "custom"
+buildCommand: "npx @11ty/eleventy"
+publishDir: "public"
+staticDir: "static"
+uploadDir: "images"
+pagesDir: "site"
+metadata:
+  title: "eurofacts ver1 dccfcffa54b1da1fec349a1e"
+  description: "Theme created in Webflow and converted with Udesly"
+models:
+  ihmiset:
+    type: "page"
+    label: "Ihmisets"
+    urlPath: "/ihmiset/{slug}"
+  palvelut:
+    type: "page"
+    label: "Palveluts"
+    urlPath: "/palvelut/{slug}"
+  blogi_uutiset:
+    type: "page"
+    label: "Blogi/Uutisets"
+    urlPath: "/blogi-uutiset/{slug}"
+  yritys:
+    type: "page"
+    label: "Yritys"
+    urlPath: "/yritys/{slug}"
+  markkina:
+    type: "page"
+    label: "Markkinats"
+    urlPath: "/markkina/{slug}"
+  yritys_sivu:
+    type: "page"
+    label: "Yritys -sivus"
+    urlPath: "/yritys-sivu/{slug}"
+  asiakkaat:
+    type: "page"
+    label: "Asiakkaats"
+    urlPath: "/asiakkaat/{slug}"

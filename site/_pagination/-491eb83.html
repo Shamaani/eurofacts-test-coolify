@@ -1,0 +1,32 @@
+---js
+{
+  pagination: {
+  data: "collections.-491eb83_paged",
+  size: 1,
+  alias: "c",
+  },
+  permalink: "{{ c.permalink }}"
+}  
+---
+{%- capture items -%}
+{%- for item in c.items -%}
+<div role="listitem" class="collection-item w-dyn-item w-col w-col-4">
+              <div class="card">
+                <h1 class="heading-2">{{ item.data.name }}</h1>
+                <p class="paragraph-3">{{ item.data.tekstit }}</p>
+                <a data-w-id="179c992e-08bd-efeb-6479-afded6ff70d1" href="{{ item.url }}" class="card-button w-inline-block">
+                  <div style="width:0%" class="etusivu-palvelut-button-hover">
+                    <p class="p is--etusivu-palvelut-button-hover">Lue lisää</p>
+                  </div>
+                  <p class="card-button-text">Lue lisää</p>
+                </a>
+              </div>
+            </div>
+{%- endfor -%}
+{%- endcapture -%}
+{
+  "items": {{ items | json }},
+   "length": "{{ c.items.length }}",
+   "next": "{{c.next }}",
+   "prev": "{{c.prev}}"
+}

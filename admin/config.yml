@@ -1,0 +1,830 @@
+backend:
+  name: "git-gateway"
+  accept_roles:
+    - "admin"
+    - "editor"
+media_folder: "static/images"
+local_backend: true
+collections:
+  - name: "pages"
+    label: "Pages"
+    folder: "site/pages"
+    identifier_field: "title"
+    extension: "md"
+    create: false
+    delete: false
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Title"
+        name: "title"
+        widget: "string"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "{{slug}}.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+  - name: "ihmiset"
+    label: "Ihmisets"
+    folder: "site/ihmiset"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "ihmiset"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-ihmiset.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - widget: "object"
+        name: "kuva"
+        label: "Kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - name: "linkedin"
+        label: "LinkedIn (URL)"
+        widget: "string"
+        required: false
+      - name: "twitter"
+        label: "Twitter (URL)"
+        widget: "string"
+        required: false
+      - name: "sahkoposti"
+        label: "Sähköposti (Email)"
+        widget: "string"
+        required: false
+      - name: "puhelin"
+        label: "Puhelin (Phone)"
+        widget: "string"
+        required: false
+      - name: "jarjestys"
+        label: "Järjestys"
+        widget: "number"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - name: "rooli"
+        label: "Rooli"
+        widget: "string"
+        required: false
+      - name: "name"
+        label: "Name"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "palvelut"
+    label: "Palveluts"
+    folder: "site/palvelut"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "palvelut"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-palvelut.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - name: "tekstit"
+        label: "Etusivun lyhyt teksti"
+        widget: "text"
+        required: false
+      - name: "kohta-sivuilla-1-on-vaikuttaminen"
+        label: "Kohta sivuilla 1 on vaikuttaminen"
+        widget: "number"
+        required: true
+      - name: "oman-sivun-laatikkoteksti"
+        label: "Oman sivun laatikkoteksti"
+        widget: "text"
+        required: false
+      - widget: "object"
+        name: "oman-sivun-kuva"
+        label: "Oman sivun kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - name: "oman-sivun-iso-teksti"
+        label: "Oman sivun iso teksti"
+        widget: "string"
+        required: false
+      - name: "oman-sivun-pitka-teksti"
+        label: "Oman sivun pitkä teksti"
+        widget: "text"
+        required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - widget: "object"
+        name: "contact-person-image"
+        label: "Contact person IMAGE"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - name: "contact-person-name"
+        label: "Contact person NAME"
+        widget: "string"
+        required: false
+      - name: "conctact-person-phone"
+        label: "Conctact person PHONE (Phone)"
+        widget: "string"
+        required: false
+      - name: "contact-person-email"
+        label: "Contact person EMAIL (Email)"
+        widget: "string"
+        required: false
+      - name: "name"
+        label: "Otsikko (esim. Vaikuttaminen)"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "blogi_uutiset"
+    label: "Blogi/Uutisets"
+    folder: "site/blogi-uutiset"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "blogi_uutiset"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-blogi-uutiset.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - name: "teksti"
+        label: "Teksti"
+        widget: "text"
+        required: false
+      - widget: "relation"
+        collection: "ihmiset"
+        value_field: "site/ihmiset/{{slug}}.md"
+        search_fields:
+          - "slug"
+          - "name"
+        display_fields:
+          - "name"
+        required: false
+        name: "kirjoittaja"
+      - name: "ingressi"
+        label: "Ingressi"
+        widget: "string"
+        required: false
+      - widget: "object"
+        name: "kuva"
+        label: "Kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - name: "name"
+        label: "Name"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "yritys"
+    label: "Yritys"
+    folder: "site/yritys"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "yritys"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-yritys.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - widget: "object"
+        name: "kuva"
+        label: "Kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - name: "teksti2"
+        label: "Teksti2"
+        widget: "string"
+        required: false
+      - name: "name"
+        label: "Name"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "markkina"
+    label: "Markkinats"
+    folder: "site/markkina"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "markkina"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-markkina.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - name: "teksti"
+        label: "Teksti"
+        widget: "text"
+        required: false
+      - name: "jarjestysnumero"
+        label: "Järjestysnumero"
+        widget: "number"
+        required: false
+      - widget: "object"
+        name: "kuva"
+        label: "Kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - name: "oman-sivun-ingressi"
+        label: "Oman sivun ingressi"
+        widget: "markdown"
+        required: false
+      - name: "korostusteksti"
+        label: "Korostusteksti"
+        widget: "string"
+        required: false
+      - widget: "relation"
+        collection: "ihmiset"
+        value_field: "site/ihmiset/{{slug}}.md"
+        search_fields:
+          - "slug"
+          - "name"
+        display_fields:
+          - "name"
+        required: false
+        name: "contact-person"
+      - name: "name"
+        label: "Name"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "yritys_sivu"
+    label: "Yritys -sivus"
+    folder: "site/yritys-sivu"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "yritys_sivu"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-yritys-sivu.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - label: "Body"
+        name: "body"
+        widget: "markdown"
+        required: false
+      - widget: "object"
+        name: "kuva"
+        label: "Kuva"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - widget: "relation"
+        collection: "ihmiset"
+        value_field: "site/ihmiset/{{slug}}.md"
+        search_fields:
+          - "slug"
+          - "name"
+        display_fields:
+          - "name"
+        required: false
+        name: "kontakti"
+      - name: "lyhyt-teksti-2"
+        label: "Lyhyt teksti"
+        widget: "string"
+        required: false
+      - name: "name"
+        label: "Otiskko"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false
+  - name: "asiakkaat"
+    label: "Asiakkaats"
+    folder: "site/asiakkaat"
+    create: true
+    identifier_field: "name"
+    extension: "md"
+    slug: "{{slug}}"
+    editor:
+      preview: false
+    fields:
+      - label: "Tags"
+        widget: "hidden"
+        name: "tags"
+        default: "asiakkaat"
+      - label: "Publish Date"
+        name: "date"
+        widget: "datetime"
+      - label: "Layout"
+        widget: "hidden"
+        name: "layout"
+        default: "single-asiakkaat.html"
+      - label: "Seo"
+        name: "seo"
+        widget: "object"
+        collapsed: true
+        fields:
+          - label: "Title"
+            name: "title"
+            widget: "string"
+            required: false
+          - label: "Description"
+            name: "description"
+            widget: "string"
+            required: false
+          - label: "Open Graph Image"
+            name: "og:image"
+            widget: "image"
+            required: false
+            media_library:
+              config:
+                multiple: false
+          - label: "Twitter Card"
+            name: "twitter:card"
+            widget: "string"
+            default: "summary"
+            required: false
+          - label: "Twitter Site"
+            name: "twitter:site"
+            widget: "string"
+            required: false
+          - label: "Twitter Creator"
+            name: "twitter:creator"
+            widget: "string"
+            required: false
+          - label: "Additional HTML tags"
+            name: "additional_tags"
+            widget: "text"
+            required: false
+      - widget: "object"
+        name: "logo"
+        label: "Logo"
+        fields:
+          - widget: "image"
+            name: "url"
+            label: "Image"
+            allow_multiple: false
+            required: false
+          - widget: "string"
+            name: "alt"
+            label: "Alt Text"
+            required: false
+      - name: "name"
+        label: "Name"
+        widget: "string"
+        required: true
+      - name: "created-on"
+        label: "Created On"
+        widget: "datetime"
+        required: false
+      - name: "updated-on"
+        label: "Updated On"
+        widget: "datetime"
+        required: false
+      - name: "published-on"
+        label: "Published On"
+        widget: "datetime"
+        required: false

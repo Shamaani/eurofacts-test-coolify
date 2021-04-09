@@ -1,0 +1,59 @@
+{
+  "-31a884f6": {
+    "collection": "palvelut"
+  },
+  "-4402cb24": {
+    "collection": "markkina",
+    "query": {
+      "sort": [
+        "jarjestysnumero"
+      ]
+    }
+  },
+  "-491eb83": {
+    "collection": "palvelut",
+    "paginationLimit": 9,
+    "query": {
+      "offset": 0,
+      "limit": 3,
+      "sort": [
+        "kohta-sivuilla-1-on-vaikuttaminen"
+      ]
+    }
+  },
+  "ac224f4": {
+    "collection": "ihmiset"
+  },
+  "3a9bf80": {
+    "collection": "asiakkaat",
+    "query": {
+      "sort": [
+        "name"
+      ]
+    }
+  },
+  "-6ad10bac": {
+    "collection": "blogi_uutiset"
+  },
+  "6315fdec": {
+    "collection": "blogi_uutiset",
+    "query": {
+      "offset": 0,
+      "fields": [
+        {
+          "fieldPath": "kirjoittaja",
+          "operatorName": "eq",
+          "value": "DYN_CONTEXT"
+        }
+      ]
+    }
+  },
+  "4ef01a8b": {
+    "collection": "ihmiset",
+    "query": {
+      "sort": [
+        "jarjestys"
+      ]
+    }
+  }
+}
