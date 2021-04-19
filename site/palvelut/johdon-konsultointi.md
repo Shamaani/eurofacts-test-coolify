@@ -12,8 +12,10 @@ _draft: false
 tags: palvelut
 date: 2021-04-07T15:17:01.115Z
 layout: single-palvelut.html
-tekstit: |
-  Miksi tämä ei toimi?
+tekstit: |-
+  Toimiiko nhyt netlifyn kautta? Miten on?
+
+  Onko näin???
 kohta-sivuilla-1-on-vaikuttaminen: 3
 oman-sivun-laatikkoteksti: |-
   ,uuttuuuko
